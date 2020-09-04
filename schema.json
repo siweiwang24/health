@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft/2019-09/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "weight": {
+      "type": "number",
+      "minimum": 0
+    },
+    "height": {
+      "type": "number",
+      "minimum": 0
+    },
+    "gender": {
+      "type": "boolean"
+    },
+    "age": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "activity": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "circumference": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "neck": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "waist": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hip": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "skinfold": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "abdominal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tricep": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "thigh": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "suprailiac": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}
