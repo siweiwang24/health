@@ -3,11 +3,11 @@ Body measurement information.
 
 Copyright 2020. Siwei Wang.
 """
+from typing import Dict, Iterable, Union
 from os import path
 from math import log10, sqrt
 from json import dump, load
 import re
-from numpy import inner             # type: ignore
 from jsonschema import validate     # type: ignore
 
 
@@ -27,6 +27,12 @@ def report_fat(fat_percent: float, gender: bool):
         else (14, 21, 25, 32)
     labels = ('Essential Fat', 'Athlete', 'Fitness', 'Average', 'Obese')
     print(f'Category: {report_bound(fat_percent, bounds, labels)}')
+
+
+def inner(vec_1: Iterable[Union[int, float]],
+          vec_2: Iterable[Union[int, float]]) -> Union[int, float]:
+    """Compute inner product of numerical sequences."""
+    return sum(entry_1 * entry_2 for entry_1, entry_2 in zip(vec_1, vec_2))
 
 
 class Body:
@@ -134,7 +140,7 @@ class Body:
         self.info.update({'activity': validated_activity})
         return validated_activity
 
-    def __require_circumference(self) -> dict:
+    def __require_circumference(self) -> Dict[str, int]:
         """Get user input for circumferences."""
         if 'circumference' in self.info:
             return self.info['circumference']
@@ -153,7 +159,7 @@ class Body:
         self.info.update({'circumference': validated_circumference})
         return validated_circumference
 
-    def __require_skinfold(self) -> dict:
+    def __require_skinfold(self) -> Dict[str, int]:
         """Get user input for skinfold measurements."""
         if 'skinfold' in self.info:
             return self.info['skinfold']
